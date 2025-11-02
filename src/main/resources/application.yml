@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: inventory-service
+  cloud:
+    config:
+      enabled: false
+    discovery:
+      enabled: false
+  datasource:
+    url: jdbc:h2:mem:products-db
+  h2:
+    console:
+      enabled: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/yascode-realm
+          jwk-set-uri: http://localhost:8080/realms/yascode-realm/protocol/openid-connect/certs
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.security.access: DEBUG
+    org.springframework.security.web: DEBUG
+    org.springframework.security.web.FilterChainProxy: TRACE
+    org.springframework.security.authentication: DEBUG
+    org.springframework.security.authorization: DEBUG
+    org.springframework.security.oauth2: DEBUG
+    org.springframework.security.oauth2.server.resource: DEBUG
+    org.springframework.security.oauth2.jwt: DEBUG
+    org.springframework.web: DEBUG
+    org.springframework: INFO
+
+server:
+  port: 8087
