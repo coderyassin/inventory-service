@@ -1,5 +1,6 @@
 package org.yascode.inventory_service.web;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,7 @@ public class ProductRestController {
         this.productRepository = productRepository;
     }
     @GetMapping
+    @PreAuthorize("hasAuthority('USER')")
     public List<Product> productList(){
         return productRepository.findAll();
     }
